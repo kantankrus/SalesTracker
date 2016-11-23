@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DirectOrderEntitiesStoreContainer" CdmEntityContainer="DirectOrdersEntities">
+    <EntitySetMapping Name="Carriers">
+      <EntityTypeMapping TypeName="DirectOrderEntities.Carrier">
+        <MappingFragment StoreEntitySet="Carrier">
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="TmsCarrName" ColumnName="TmsCarrName" />
+          <ScalarProperty Name="CarrDesc" ColumnName="CarrDesc" />
+          <ScalarProperty Name="CarrCode" ColumnName="CarrCode" />
+          <ScalarProperty Name="CarrId" ColumnName="CarrId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="DirectOrderEntities.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+          <ScalarProperty Name="Blast" ColumnName="Blast" />
+          <ScalarProperty Name="LegacyContact" ColumnName="LegacyContact" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="PrimaryEmail" ColumnName="PrimaryEmail" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DirectOrderEntities.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="dc" ColumnName="dc" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TMSCUSTOMER_NAME" ColumnName="TMSCUSTOMER_NAME" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="HapcoUsesCustomer" ColumnName="HapcoUsesCustomer" />
+          <ScalarProperty Name="CustDesc" ColumnName="CustDesc" />
+          <ScalarProperty Name="CustCode" ColumnName="CustCode" />
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustPOLines">
+      <EntityTypeMapping TypeName="DirectOrderEntities.CustPOLine">
+        <MappingFragment StoreEntitySet="CustPOLine">
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="CarrierDesc" ColumnName="CarrierDesc" />
+          <ScalarProperty Name="CarrierCode" ColumnName="CarrierCode" />
+          <ScalarProperty Name="LoadNumber" ColumnName="LoadNumber" />
+          <ScalarProperty Name="POLineComment" ColumnName="POLineComment" />
+          <ScalarProperty Name="AltQty" ColumnName="AltQty" />
+          <ScalarProperty Name="PPROMODTIME" ColumnName="PPROMODTIME" />
+          <ScalarProperty Name="PPROMODDATE" ColumnName="PPROMODDATE" />
+          <ScalarProperty Name="PPROCREATEDATE" ColumnName="PPROCREATEDATE" />
+          <ScalarProperty Name="PPROCREATETIME" ColumnName="PPROCREATETIME" />
+          <ScalarProperty Name="WAREHOUSE" ColumnName="WAREHOUSE" />
+          <ScalarProperty Name="LINE" ColumnName="LINE" />
+          <ScalarProperty Name="SUBLOT" ColumnName="SUBLOT" />
+          <ScalarProperty Name="ISTEMP" ColumnName="ISTEMP" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="CONDCODE" ColumnName="CONDCODE" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+          <ScalarProperty Name="LASTBULKUPDATE" ColumnName="LASTBULKUPDATE" />
+          <ScalarProperty Name="PPROREFDATE" ColumnName="PPROREFDATE" />
+          <ScalarProperty Name="LOT" ColumnName="LOT" />
+          <ScalarProperty Name="ConfirmQty" ColumnName="ConfirmQty" />
+          <ScalarProperty Name="Manifest" ColumnName="Manifest" />
+          <ScalarProperty Name="Booked" ColumnName="Booked" />
+          <ScalarProperty Name="ActionRequired" ColumnName="ActionRequired" />
+          <ScalarProperty Name="PalletCount" ColumnName="PalletCount" />
+          <ScalarProperty Name="Pickup" ColumnName="Pickup" />
+          <ScalarProperty Name="ShipperId" ColumnName="ShipperId" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="PerPcChargeTypeID" ColumnName="PerPcChargeTypeID" />
+          <ScalarProperty Name="MiscChargePerPc" ColumnName="MiscChargePerPc" />
+          <ScalarProperty Name="LineFrghtRate" ColumnName="LineFrghtRate" />
+          <ScalarProperty Name="CustPOID" ColumnName="CustPOID" />
+          <ScalarProperty Name="VendPurchPONum" ColumnName="VendPurchPONum" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="AlertReasonID" ColumnName="AlertReasonID" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="LineGM" ColumnName="LineGM" />
+          <ScalarProperty Name="ChargeTypeID" ColumnName="ChargeTypeID" />
+          <ScalarProperty Name="VendAlt" ColumnName="VendAlt" />
+          <ScalarProperty Name="CostAlt" ColumnName="CostAlt" />
+          <ScalarProperty Name="VBRCharge" ColumnName="VBRCharge" />
+          <ScalarProperty Name="PHDSCharge" ColumnName="PHDSCharge" />
+          <ScalarProperty Name="MiscCharge" ColumnName="MiscCharge" />
+          <ScalarProperty Name="VendRefNumAlt" ColumnName="VendRefNumAlt" />
+          <ScalarProperty Name="PriceAlt" ColumnName="PriceAlt" />
+          <ScalarProperty Name="VendId" ColumnName="VendId" />
+          <ScalarProperty Name="FreshouseRefNum" ColumnName="FreshouseRefNum" />
+          <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+          <ScalarProperty Name="POLineStatusID" ColumnName="POLineStatusID" />
+          <ScalarProperty Name="VendRefNum" ColumnName="VendRefNum" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ApptNum" ColumnName="ApptNum" />
+          <ScalarProperty Name="POLineLoadDate" ColumnName="POLineLoadDate" />
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="CustPOLineID" ColumnName="CustPOLineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POLineStatus">
+      <EntityTypeMapping TypeName="DirectOrderEntities.POLineStatu">
+        <MappingFragment StoreEntitySet="POLineStatus">
+          <ScalarProperty Name="POLineStatusMap" ColumnName="POLineStatusMap" />
+          <ScalarProperty Name="POLineStatusDesc" ColumnName="POLineStatusDesc" />
+          <ScalarProperty Name="POLineStatusID" ColumnName="POLineStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POStatus">
+      <EntityTypeMapping TypeName="DirectOrderEntities.POStatu">
+        <MappingFragment StoreEntitySet="POStatus">
+          <ScalarProperty Name="POStatusID" ColumnName="POStatusID" />
+          <ScalarProperty Name="POStatusDesc" ColumnName="POStatusDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippers">
+      <EntityTypeMapping TypeName="DirectOrderEntities.shipper">
+        <MappingFragment StoreEntitySet="shipper">
+          <ScalarProperty Name="ShipperId" ColumnName="ShipperId" />
+          <ScalarProperty Name="TMSID" ColumnName="TMSID" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="ShipperCode" ColumnName="ShipperCode" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DirectOrderEntities.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="PPROUserName" ColumnName="PPROUserName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="DirectOrderEntities.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="HapcoUsesVendor" ColumnName="HapcoUsesVendor" />
+          <ScalarProperty Name="VendDesc" ColumnName="VendDesc" />
+          <ScalarProperty Name="VendCode" ColumnName="VendCode" />
+          <ScalarProperty Name="VendId" ColumnName="VendId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DirectOrderEntities.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ReorderQuant" ColumnName="ReorderQuant" />
+          <ScalarProperty Name="ReorderAdviseQuant" ColumnName="ReorderAdviseQuant" />
+          <ScalarProperty Name="RepackRatio" ColumnName="RepackRatio" />
+          <ScalarProperty Name="CasesPerPallet" ColumnName="CasesPerPallet" />
+          <ScalarProperty Name="ProdCompany" ColumnName="ProdCompany" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="ProdPack" ColumnName="ProdPack" />
+          <ScalarProperty Name="ProdGrade" ColumnName="ProdGrade" />
+          <ScalarProperty Name="ProdWeight" ColumnName="ProdWeight" />
+          <ScalarProperty Name="ProdCountPer" ColumnName="ProdCountPer" />
+          <ScalarProperty Name="ProdSize" ColumnName="ProdSize" />
+          <ScalarProperty Name="ProdAltDesc" ColumnName="ProdAltDesc" />
+          <ScalarProperty Name="ProdDesc" ColumnName="ProdDesc" />
+          <ScalarProperty Name="ProdCode" ColumnName="ProdCode" />
+          <ScalarProperty Name="ProdNum" ColumnName="ProdNum" />
+          <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustPOes">
+      <EntityTypeMapping TypeName="DirectOrderEntities.CustPO">
+        <MappingFragment StoreEntitySet="CustPO">
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+          <ScalarProperty Name="Salesperson" ColumnName="Salesperson" />
+          <ScalarProperty Name="PPROMODTIME" ColumnName="PPROMODTIME" />
+          <ScalarProperty Name="PPROMODDATE" ColumnName="PPROMODDATE" />
+          <ScalarProperty Name="LASTBULKUPDATE" ColumnName="LASTBULKUPDATE" />
+          <ScalarProperty Name="AltQty" ColumnName="AltQty" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="REFSTATUS" ColumnName="REFSTATUS" />
+          <ScalarProperty Name="UNITCOST" ColumnName="UNITCOST" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="PRODID" ColumnName="PRODID" />
+          <ScalarProperty Name="PPROCREATETIME" ColumnName="PPROCREATETIME" />
+          <ScalarProperty Name="PPROCREATEDATE" ColumnName="PPROCREATEDATE" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="LINE" ColumnName="LINE" />
+          <ScalarProperty Name="WAREHOUSE" ColumnName="WAREHOUSE" />
+          <ScalarProperty Name="CONDCODE" ColumnName="CONDCODE" />
+          <ScalarProperty Name="SUBLOT" ColumnName="SUBLOT" />
+          <ScalarProperty Name="LOT" ColumnName="LOT" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+          <ScalarProperty Name="POLoadStatusID" ColumnName="POLoadStatusID" />
+          <ScalarProperty Name="TruckingArrivalDate" ColumnName="TruckingArrivalDate" />
+          <ScalarProperty Name="DeliveryRequestSent" ColumnName="DeliveryRequestSent" />
+          <ScalarProperty Name="BOLRequestSent" ColumnName="BOLRequestSent" />
+          <ScalarProperty Name="StopNum" ColumnName="StopNum" />
+          <ScalarProperty Name="EVNum" ColumnName="EVNum" />
+          <ScalarProperty Name="ConfNum" ColumnName="ConfNum" />
+          <ScalarProperty Name="LogisticsPO" ColumnName="LogisticsPO" />
+          <ScalarProperty Name="trip" ColumnName="trip" />
+          <ScalarProperty Name="POFreightLinkToCode" ColumnName="POFreightLinkToCode" />
+          <ScalarProperty Name="POFrghtRate" ColumnName="POFrghtRate" />
+          <ScalarProperty Name="MainCommodity" ColumnName="MainCommodity" />
+          <ScalarProperty Name="POGM" ColumnName="POGM" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LoadID" ColumnName="LoadID" />
+          <ScalarProperty Name="AlertReasonID" ColumnName="AlertReasonID" />
+          <ScalarProperty Name="SalesOrderAlt" ColumnName="SalesOrderAlt" />
+          <ScalarProperty Name="Reroute" ColumnName="Reroute" />
+          <ScalarProperty Name="PriorPOCustCode" ColumnName="PriorPOCustCode" />
+          <ScalarProperty Name="ReroutePOCode" ColumnName="ReroutePOCode" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CustShipToID" ColumnName="CustShipToID" />
+          <ScalarProperty Name="CustBillToID" ColumnName="CustBillToID" />
+          <ScalarProperty Name="ReroutePOCustCode" ColumnName="ReroutePOCustCode" />
+          <ScalarProperty Name="ReceivedFoodLink" ColumnName="ReceivedFoodLink" />
+          <ScalarProperty Name="ReceivedPPRO" ColumnName="ReceivedPPRO" />
+          <ScalarProperty Name="POBillToRef" ColumnName="POBillToRef" />
+          <ScalarProperty Name="POAlert" ColumnName="POAlert" />
+          <ScalarProperty Name="ApptNum" ColumnName="ApptNum" />
+          <ScalarProperty Name="POStatusID" ColumnName="POStatusID" />
+          <ScalarProperty Name="PPROREFDATE" ColumnName="PPROREFDATE" />
+          <ScalarProperty Name="PriorPOCode" ColumnName="PriorPOCode" />
+          <ScalarProperty Name="SalesOrder" ColumnName="SalesOrder" />
+          <ScalarProperty Name="CarrId" ColumnName="CarrId" />
+          <ScalarProperty Name="LinkFreightPOID" ColumnName="LinkFreightPOID" />
+          <ScalarProperty Name="ShippedInSystem" ColumnName="ShippedInSystem" />
+          <ScalarProperty Name="DeliveredToCust" ColumnName="DeliveredToCust" />
+          <ScalarProperty Name="DocsReceived" ColumnName="DocsReceived" />
+          <ScalarProperty Name="DocsSent" ColumnName="DocsSent" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="POComment" ColumnName="POComment" />
+          <ScalarProperty Name="POShipToRef" ColumnName="POShipToRef" />
+          <ScalarProperty Name="CustPOID" ColumnName="CustPOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

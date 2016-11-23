@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FreshouseSalesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.bakvend' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.CarrRef' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.CustRef' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'FreshouseSales.dbo.CustUpd' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CustUpd">
+          <Property Name="CUSTOMER_CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_ADDRESS01" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_ADDRESS02" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_CATEGORY09" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_CITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_ZIP_CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="SALES_STATE_CODE" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'FreshouseSales.dbo.DCDate' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DCDate">
+          <Property Name="DC" Type="tinyint" />
+          <Property Name="Date" Type="date" />
+          <Property Name="EventId" Type="smallint" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.FHEDI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.fhedibak' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.FHPIVOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.MergeSource_Inventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.PHLotComments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.ProdRef' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'FreshouseSales.dbo.Sales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sales">
+          <Property Name="EmpId" Type="int" />
+          <Property Name="Yr" Type="int" />
+          <Property Name="Sales" Type="money" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FreshouseSales.dbo.VendRef' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Contact__CustId__56E8E7AB' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Contact__CustId__56E8E7AB" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'FreshouseSales.dbo.DCDate' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DCDate__Date__08162EEB" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'FreshouseSales.dbo.DCDate' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DCDate__DC__07220AB2" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'FreshouseSales.dbo.DCDate' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DCDate__EventId__090A5324" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'MergeSource_RelPOCustCode_Cust' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="MergeSource_RelPOCustCode_Cust" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'RelPOCustCode_Cust' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="RelPOCustCode_Cust" />-->
+  <EntityContainer Name="FreshouseSalesModelStoreContainer" />
+</Schema>

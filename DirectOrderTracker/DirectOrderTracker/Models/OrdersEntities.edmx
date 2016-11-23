@@ -1,0 +1,1124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrdersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carrier">
+          <Key>
+            <PropertyRef Name="CarrId" />
+          </Key>
+          <Property Name="CarrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarrCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CarrDesc" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TmsCarrName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Phone" Type="varchar" MaxLength="14" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustId" />
+          </Key>
+          <Property Name="CustId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CustDesc" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="HapcoUsesCustomer" Type="bit" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="Country" Type="nvarchar" MaxLength="20" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+          <Property Name="TMSCUSTOMER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Phone" Type="varchar" MaxLength="14" />
+          <Property Name="dc" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="CustPO">
+          <Key>
+            <PropertyRef Name="CustPOID" />
+          </Key>
+          <Property Name="CustPOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POShipToRef" Type="nvarchar" MaxLength="25" />
+          <Property Name="POComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="DocsSent" Type="bit" />
+          <Property Name="LinkFreightPOID" Type="int" />
+          <Property Name="CarrId" Type="int" />
+          <Property Name="SalesOrder" Type="nvarchar" MaxLength="8" />
+          <Property Name="PriorPOCode" Type="char" MaxLength="25" />
+          <Property Name="PPROREFDATE" Type="nchar" MaxLength="8" />
+          <Property Name="POStatusID" Type="tinyint" />
+          <Property Name="ApptNum" Type="nvarchar" MaxLength="14" />
+          <Property Name="POBillToRef" Type="nvarchar" MaxLength="25" />
+          <Property Name="ReceivedPPRO" Type="bit" />
+          <Property Name="CustBillToID" Type="smallint" />
+          <Property Name="CustShipToID" Type="smallint" />
+          <Property Name="CompanyID" Type="tinyint" />
+          <Property Name="ReroutePOCode" Type="char" MaxLength="25" />
+          <Property Name="PriorPOCustCode" Type="smallint" />
+          <Property Name="SalesOrderAlt" Type="char" MaxLength="6" />
+          <Property Name="AlertReasonID" Type="tinyint" />
+          <Property Name="LoadID" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="25" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="25" />
+          <Property Name="ModifyDate" Type="date" />
+          <Property Name="POGM" Type="money" />
+          <Property Name="MainCommodity" Type="varchar" MaxLength="12" />
+          <Property Name="POFrghtRate" Type="money" />
+          <Property Name="POFreightLinkToCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="trip" Type="nvarchar" MaxLength="8" />
+          <Property Name="LogisticsPO" Type="char" MaxLength="6" />
+          <Property Name="ConfNum" Type="varchar" MaxLength="20" />
+          <Property Name="StopNum" Type="tinyint" />
+          <Property Name="BOLRequestSent" Type="smalldatetime" />
+          <Property Name="DeliveryRequestSent" Type="smalldatetime" />
+          <Property Name="TruckingArrivalDate" Type="smalldatetime" />
+          <Property Name="POLoadStatusID" Type="int" />
+          <Property Name="SOURCE" Type="nchar" MaxLength="2" />
+          <Property Name="TYPE" Type="nchar" MaxLength="2" />
+          <Property Name="LOT" Type="nchar" MaxLength="9" />
+          <Property Name="SUBLOT" Type="nchar" MaxLength="2" />
+          <Property Name="CONDCODE" Type="nchar" MaxLength="2" />
+          <Property Name="WAREHOUSE" Type="nchar" MaxLength="2" />
+          <Property Name="LINE" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="Qty" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="PPROCREATEDATE" Type="nchar" MaxLength="8" />
+          <Property Name="PPROCREATETIME" Type="nchar" MaxLength="8" />
+          <Property Name="PRODID" Type="int" />
+          <Property Name="UNITPRICE" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="UNITCOST" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="REFSTATUS" Type="nchar" MaxLength="1" />
+          <Property Name="AltQty" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="LASTBULKUPDATE" Type="smalldatetime" />
+          <Property Name="PPROMODDATE" Type="nchar" MaxLength="8" />
+          <Property Name="PPROMODTIME" Type="nchar" MaxLength="8" />
+          <Property Name="Salesperson" Type="nchar" MaxLength="3" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="ArrivalDate" Type="datetime" />
+          <Property Name="VendId" Type="int" />
+          <Property Name="VendorPO" Type="nvarchar" MaxLength="14" />
+          <Property Name="REFDATESQL" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustPOLine">
+          <Key>
+            <PropertyRef Name="CustPOLineID" />
+          </Key>
+          <Property Name="CustPOLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Qty" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="Price" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="Cost" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="Origin" Type="nchar" MaxLength="10" />
+          <Property Name="POLineLoadDate" Type="smalldatetime" />
+          <Property Name="ApptNum" Type="varchar" MaxLength="12" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="VendRefNum" Type="nchar" MaxLength="15" />
+          <Property Name="POLineStatusID" Type="tinyint" />
+          <Property Name="ProdID" Type="int" />
+          <Property Name="FreshouseRefNum" Type="nvarchar" MaxLength="8" />
+          <Property Name="VendId" Type="int" />
+          <Property Name="VendRefNumAlt" Type="nchar" MaxLength="14" />
+          <Property Name="MiscCharge" Type="money" />
+          <Property Name="PHDSCharge" Type="money" />
+          <Property Name="VBRCharge" Type="money" />
+          <Property Name="VendAlt" Type="char" MaxLength="6" />
+          <Property Name="ChargeTypeID" Type="tinyint" />
+          <Property Name="LineGM" Type="money" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="AlertReasonID" Type="tinyint" />
+          <Property Name="ModifiedBy" Type="nchar" MaxLength="6" />
+          <Property Name="CreatedBy" Type="nchar" MaxLength="6" />
+          <Property Name="VendPurchPONum" Type="nvarchar" MaxLength="15" />
+          <Property Name="CustPOID" Type="int" />
+          <Property Name="LineFrghtRate" Type="money" />
+          <Property Name="MiscChargePerPc" Type="money" />
+          <Property Name="PerPcChargeTypeID" Type="tinyint" />
+          <Property Name="ShipperId" Type="smallint" />
+          <Property Name="Pickup" Type="nvarchar" MaxLength="25" />
+          <Property Name="PalletCount" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="ActionRequired" Type="bit" />
+          <Property Name="Booked" Type="bit" />
+          <Property Name="Manifest" Type="bit" />
+          <Property Name="ConfirmQty" Type="bit" />
+          <Property Name="LOT" Type="nvarchar" MaxLength="9" />
+          <Property Name="PPROREFDATE" Type="nchar" MaxLength="8" />
+          <Property Name="LASTBULKUPDATE" Type="smalldatetime" />
+          <Property Name="SOURCE" Type="nchar" MaxLength="2" />
+          <Property Name="TYPE" Type="nchar" MaxLength="2" />
+          <Property Name="CONDCODE" Type="nchar" MaxLength="2" />
+          <Property Name="SUBLOT" Type="nchar" MaxLength="2" />
+          <Property Name="LINE" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="WAREHOUSE" Type="nchar" MaxLength="2" />
+          <Property Name="PPROCREATETIME" Type="nchar" MaxLength="8" />
+          <Property Name="PPROCREATEDATE" Type="nchar" MaxLength="8" />
+          <Property Name="PPROMODDATE" Type="nchar" MaxLength="8" />
+          <Property Name="PPROMODTIME" Type="nchar" MaxLength="8" />
+          <Property Name="AltQty" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="POLineComment" Type="nvarchar" MaxLength="500" />
+          <Property Name="LoadNumber" Type="nchar" MaxLength="8" />
+          <Property Name="CarrierCode" Type="nchar" MaxLength="6" />
+          <Property Name="CarrierDesc" Type="nchar" MaxLength="30" />
+          <Property Name="Buyer" Type="nchar" MaxLength="3" />
+          <Property Name="CostAlt" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="REFDATESQL" Type="datetime" />
+        </EntityType>
+        <EntityType Name="POLineStatus">
+          <Key>
+            <PropertyRef Name="POLineStatusID" />
+          </Key>
+          <Property Name="POLineStatusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POLineStatusDesc" Type="char" MaxLength="14" />
+          <Property Name="POLineStatusMap" Type="binary" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="POStatus">
+          <Key>
+            <PropertyRef Name="POStatusID" />
+          </Key>
+          <Property Name="POStatusDesc" Type="nchar" MaxLength="12" />
+          <Property Name="POStatusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProdCat">
+          <Key>
+            <PropertyRef Name="ProdCatID" />
+          </Key>
+          <Property Name="ProdCatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prodid" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="smallint" Nullable="false" />
+          <Property Name="Invisible" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="ProdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProdNum" Type="nchar" MaxLength="6" />
+          <Property Name="ProdCode" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="ProdDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="ProdAltDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="ProdSize" Type="smallint" />
+          <Property Name="ProdCountPer" Type="char" MaxLength="1" />
+          <Property Name="ProdWeight" Type="int" />
+          <Property Name="ProdGrade" Type="char" MaxLength="2" />
+          <Property Name="ProdPack" Type="varchar" MaxLength="12" />
+          <Property Name="Commodity" Type="varchar" MaxLength="12" />
+          <Property Name="ProductType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ProdCompany" Type="tinyint" Nullable="false" />
+          <Property Name="CasesPerPallet" Type="smallint" />
+          <Property Name="RepackRatio" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="ReorderAdviseQuant" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ReorderQuant" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendId" />
+          </Key>
+          <Property Name="VendId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="VendDesc" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="HapcoUsesVendor" Type="bit" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+          <Property Name="State" Type="nchar" MaxLength="2" />
+          <Property Name="Country" Type="nchar" MaxLength="3" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_CustPOLine_CustPO">
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustPO">
+              <PropertyRef Name="CustPOID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="CustPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustPOLine_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustPOLine_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendId" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="VendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Prodid_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProdCat" Type="Self.ProdCat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="ProdCat">
+              <PropertyRef Name="Prodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Carrier">
+          <End Role="Carrier" Type="Self.Carrier" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrier">
+              <PropertyRef Name="CarrId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CarrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Cust">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CustBillToID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Prod">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="PRODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Vend">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="VendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOCustCode_Cust">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CustBillToID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOLine_LineStatus">
+          <End Role="POLineStatus" Type="Self.POLineStatus" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLineStatus">
+              <PropertyRef Name="POLineStatusID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="POLineStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOStatus_CustPO">
+          <End Role="POStatus" Type="Self.POStatus" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POStatus">
+              <PropertyRef Name="POStatusID" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="POStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrdersModelStoreContainer">
+          <EntitySet Name="Carrier" EntityType="Self.Carrier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustPO" EntityType="Self.CustPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustPOLine" EntityType="Self.CustPOLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLineStatus" EntityType="Self.POLineStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POStatus" EntityType="Self.POStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProdCat" EntityType="Self.ProdCat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustPOLine_CustPO" Association="Self.FK_CustPOLine_CustPO">
+            <End Role="CustPO" EntitySet="CustPO" />
+            <End Role="CustPOLine" EntitySet="CustPOLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustPOLine_Product" Association="Self.FK_CustPOLine_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="CustPOLine" EntitySet="CustPOLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustPOLine_Vendor" Association="Self.FK_CustPOLine_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="CustPOLine" EntitySet="CustPOLine" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Prodid_Product" Association="Self.fk_Prodid_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProdCat" EntitySet="ProdCat" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Carrier" Association="Self.RelCustPO_Carrier">
+            <End Role="Carrier" EntitySet="Carrier" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Cust" Association="Self.RelCustPO_Cust">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Prod" Association="Self.RelCustPO_Prod">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Vend" Association="Self.RelCustPO_Vend">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOCustCode_Cust" Association="Self.RelPOCustCode_Cust">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOLine_LineStatus" Association="Self.RelPOLine_LineStatus">
+            <End Role="POLineStatus" EntitySet="POLineStatus" />
+            <End Role="CustPOLine" EntitySet="CustPOLine" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOStatus_CustPO" Association="Self.RelPOStatus_CustPO">
+            <End Role="POStatus" EntitySet="POStatus" />
+            <End Role="CustPO" EntitySet="CustPO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrdersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carrier">
+          <Key>
+            <PropertyRef Name="CarrId" />
+          </Key>
+          <Property Name="CarrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarrCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarrDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TmsCarrName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustPOes" Relationship="Self.RelCustPO_Carrier" FromRole="Carrier" ToRole="CustPO" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustId" />
+          </Key>
+          <Property Name="CustId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HapcoUsesCustomer" Type="Boolean" />
+          <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TMSCUSTOMER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="dc" Type="Byte" />
+          <NavigationProperty Name="CustPOes" Relationship="Self.RelCustPO_Cust" FromRole="Customer" ToRole="CustPO" />
+          <NavigationProperty Name="CustPOes1" Relationship="Self.RelPOCustCode_Cust" FromRole="Customer" ToRole="CustPO" />
+        </EntityType>
+        <EntityType Name="CustPO">
+          <Key>
+            <PropertyRef Name="CustPOID" />
+          </Key>
+          <Property Name="CustPOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POShipToRef" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="POComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="DocsSent" Type="Boolean" />
+          <Property Name="LinkFreightPOID" Type="Int32" />
+          <Property Name="CarrId" Type="Int32" />
+          <Property Name="SalesOrder" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PriorPOCode" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="PPROREFDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="POStatusID" Type="Byte" />
+          <Property Name="ApptNum" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="POBillToRef" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedPPRO" Type="Boolean" />
+          <Property Name="CustBillToID" Type="Int16" />
+          <Property Name="CustShipToID" Type="Int16" />
+          <Property Name="CompanyID" Type="Byte" />
+          <Property Name="ReroutePOCode" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="PriorPOCustCode" Type="Int16" />
+          <Property Name="SalesOrderAlt" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="AlertReasonID" Type="Byte" />
+          <Property Name="LoadID" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="0" />
+          <Property Name="POGM" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MainCommodity" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="POFrghtRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="POFreightLinkToCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="trip" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="LogisticsPO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ConfNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StopNum" Type="Byte" />
+          <Property Name="BOLRequestSent" Type="DateTime" Precision="0" />
+          <Property Name="DeliveryRequestSent" Type="DateTime" Precision="0" />
+          <Property Name="TruckingArrivalDate" Type="DateTime" Precision="0" />
+          <Property Name="POLoadStatusID" Type="Int32" />
+          <Property Name="SOURCE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="TYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="LOT" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="SUBLOT" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="CONDCODE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="WAREHOUSE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="LINE" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Qty" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PPROCREATEDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PPROCREATETIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PRODID" Type="Int32" />
+          <Property Name="UNITPRICE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="UNITCOST" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="REFSTATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="AltQty" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="LASTBULKUPDATE" Type="DateTime" Precision="0" />
+          <Property Name="PPROMODDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PPROMODTIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Salesperson" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Carrier" Relationship="Self.RelCustPO_Carrier" FromRole="CustPO" ToRole="Carrier" />
+          <NavigationProperty Name="Customer" Relationship="Self.RelCustPO_Cust" FromRole="CustPO" ToRole="Customer" />
+          <NavigationProperty Name="Customer1" Relationship="Self.RelPOCustCode_Cust" FromRole="CustPO" ToRole="Customer" />
+          <NavigationProperty Name="CustPOLines" Relationship="Self.FK_CustPOLine_CustPO" FromRole="CustPO" ToRole="CustPOLine" />
+          <NavigationProperty Name="Product" Relationship="Self.RelCustPO_Prod" FromRole="CustPO" ToRole="Product" />
+          <NavigationProperty Name="POStatu" Relationship="Self.RelPOStatus_CustPO" FromRole="CustPO" ToRole="POStatus" />
+          <Property Name="VendId" Type="Int32" />
+          <NavigationProperty Name="Vendor" Relationship="OrdersModel.RelCustPO_Vend" FromRole="CustPO" ToRole="Vendor" />
+          <Property Name="VendorPO" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="REFDATESQL" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CustPOLine">
+          <Key>
+            <PropertyRef Name="CustPOLineID" />
+          </Key>
+          <Property Name="CustPOLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Qty" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Origin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="POLineLoadDate" Type="DateTime" Precision="0" />
+          <Property Name="ApptNum" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="VendRefNum" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="POLineStatusID" Type="Byte" />
+          <Property Name="ProdID" Type="Int32" />
+          <Property Name="FreshouseRefNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="VendId" Type="Int32" />
+          <Property Name="VendRefNumAlt" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="MiscCharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PHDSCharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VBRCharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CostAlt" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="VendAlt" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ChargeTypeID" Type="Byte" />
+          <Property Name="LineGM" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="AlertReasonID" Type="Byte" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="VendPurchPONum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CustPOID" Type="Int32" />
+          <Property Name="LineFrghtRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MiscChargePerPc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PerPcChargeTypeID" Type="Byte" />
+          <Property Name="ShipperId" Type="Int16" />
+          <Property Name="Pickup" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PalletCount" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="ActionRequired" Type="Boolean" />
+          <Property Name="Booked" Type="Boolean" />
+          <Property Name="Manifest" Type="Boolean" />
+          <Property Name="ConfirmQty" Type="Boolean" />
+          <Property Name="LOT" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="PPROREFDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="LASTBULKUPDATE" Type="DateTime" Precision="0" />
+          <Property Name="SOURCE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="TYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="CONDCODE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="SUBLOT" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="LINE" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="WAREHOUSE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="PPROCREATETIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PPROCREATEDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PPROMODDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="PPROMODTIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="AltQty" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="POLineComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LoadNumber" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="CarrierCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="CarrierDesc" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Buyer" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CustPO" Relationship="Self.FK_CustPOLine_CustPO" FromRole="CustPOLine" ToRole="CustPO" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_CustPOLine_Product" FromRole="CustPOLine" ToRole="Product" />
+          <NavigationProperty Name="Vendor" Relationship="Self.FK_CustPOLine_Vendor" FromRole="CustPOLine" ToRole="Vendor" />
+          <NavigationProperty Name="POLineStatu" Relationship="Self.RelPOLine_LineStatus" FromRole="CustPOLine" ToRole="POLineStatus" />
+          <Property Name="REFDATESQL" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="POLineStatu">
+          <Key>
+            <PropertyRef Name="POLineStatusID" />
+          </Key>
+          <Property Name="POLineStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POLineStatusDesc" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="POLineStatusMap" Type="Binary" MaxLength="4" FixedLength="true" />
+          <NavigationProperty Name="CustPOLines" Relationship="Self.RelPOLine_LineStatus" FromRole="POLineStatus" ToRole="CustPOLine" />
+        </EntityType>
+        <EntityType Name="POStatu">
+          <Key>
+            <PropertyRef Name="POStatusID" />
+          </Key>
+          <Property Name="POStatusDesc" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="POStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CustPOes" Relationship="Self.RelPOStatus_CustPO" FromRole="POStatus" ToRole="CustPO" />
+        </EntityType>
+        <EntityType Name="ProdCat">
+          <Key>
+            <PropertyRef Name="ProdCatID" />
+          </Key>
+          <Property Name="ProdCatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prodid" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int16" Nullable="false" />
+          <Property Name="Invisible" Type="Boolean" Nullable="false" />
+          <Property Name="SortOrder" Type="Int16" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Prodid_Product" FromRole="ProdCat" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="ProdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProdNum" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="ProdCode" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ProdDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ProdAltDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ProdSize" Type="Int16" />
+          <Property Name="ProdCountPer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ProdWeight" Type="Int32" />
+          <Property Name="ProdGrade" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ProdPack" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Commodity" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ProductType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ProdCompany" Type="Byte" Nullable="false" />
+          <Property Name="CasesPerPallet" Type="Int16" />
+          <Property Name="RepackRatio" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ReorderAdviseQuant" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ReorderQuant" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="CustPOes" Relationship="Self.RelCustPO_Prod" FromRole="Product" ToRole="CustPO" />
+          <NavigationProperty Name="CustPOLines" Relationship="Self.FK_CustPOLine_Product" FromRole="Product" ToRole="CustPOLine" />
+          <NavigationProperty Name="ProdCats" Relationship="Self.fk_Prodid_Product" FromRole="Product" ToRole="ProdCat" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendId" />
+          </Key>
+          <Property Name="VendId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="VendDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HapcoUsesVendor" Type="Boolean" />
+          <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustPOLines" Relationship="Self.FK_CustPOLine_Vendor" FromRole="Vendor" ToRole="CustPOLine" />
+          <NavigationProperty Name="CustPOes" Relationship="OrdersModel.RelCustPO_Vend" FromRole="Vendor" ToRole="CustPO" />
+        </EntityType>
+        <Association Name="RelCustPO_Carrier">
+          <End Role="Carrier" Type="Self.Carrier" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrier">
+              <PropertyRef Name="CarrId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CarrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Cust">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CustBillToID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOCustCode_Cust">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="CustBillToID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustPOLine_CustPO">
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustPO">
+              <PropertyRef Name="CustPOID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="CustPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelCustPO_Prod">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="PRODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOStatus_CustPO">
+          <End Role="POStatus" Type="Self.POStatu" Multiplicity="0..1" />
+          <End Role="CustPO" Type="Self.CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POStatus">
+              <PropertyRef Name="POStatusID" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="POStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustPOLine_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustPOLine_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendId" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="VendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelPOLine_LineStatus">
+          <End Role="POLineStatus" Type="Self.POLineStatu" Multiplicity="0..1" />
+          <End Role="CustPOLine" Type="Self.CustPOLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLineStatus">
+              <PropertyRef Name="POLineStatusID" />
+            </Principal>
+            <Dependent Role="CustPOLine">
+              <PropertyRef Name="POLineStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Prodid_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProdCat" Type="Self.ProdCat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="ProdCat">
+              <PropertyRef Name="Prodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrdersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carriers" EntityType="Self.Carrier" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustPOes" EntityType="Self.CustPO" />
+          <EntitySet Name="CustPOLines" EntityType="Self.CustPOLine" />
+          <EntitySet Name="POLineStatus" EntityType="Self.POLineStatu" />
+          <EntitySet Name="POStatus" EntityType="Self.POStatu" />
+          <EntitySet Name="ProdCats" EntityType="Self.ProdCat" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <AssociationSet Name="RelCustPO_Carrier" Association="Self.RelCustPO_Carrier">
+            <End Role="Carrier" EntitySet="Carriers" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Cust" Association="Self.RelCustPO_Cust">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOCustCode_Cust" Association="Self.RelPOCustCode_Cust">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustPOLine_CustPO" Association="Self.FK_CustPOLine_CustPO">
+            <End Role="CustPO" EntitySet="CustPOes" />
+            <End Role="CustPOLine" EntitySet="CustPOLines" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Prod" Association="Self.RelCustPO_Prod">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOStatus_CustPO" Association="Self.RelPOStatus_CustPO">
+            <End Role="POStatus" EntitySet="POStatus" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustPOLine_Product" Association="Self.FK_CustPOLine_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CustPOLine" EntitySet="CustPOLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustPOLine_Vendor" Association="Self.FK_CustPOLine_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="CustPOLine" EntitySet="CustPOLines" />
+          </AssociationSet>
+          <AssociationSet Name="RelPOLine_LineStatus" Association="Self.RelPOLine_LineStatus">
+            <End Role="POLineStatus" EntitySet="POLineStatus" />
+            <End Role="CustPOLine" EntitySet="CustPOLines" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Prodid_Product" Association="Self.fk_Prodid_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProdCat" EntitySet="ProdCats" />
+          </AssociationSet>
+          <AssociationSet Name="RelCustPO_Vend" Association="OrdersModel.RelCustPO_Vend">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="CustPO" EntitySet="CustPOes" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="RelCustPO_Vend">
+          <End Type="OrdersModel.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="OrdersModel.CustPO" Role="CustPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendId" />
+            </Principal>
+            <Dependent Role="CustPO">
+              <PropertyRef Name="VendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrdersModelStoreContainer" CdmEntityContainer="OrdersEntities">
+          <EntitySetMapping Name="Carriers">
+            <EntityTypeMapping TypeName="OrdersModel.Carrier">
+              <MappingFragment StoreEntitySet="Carrier">
+                <ScalarProperty Name="CarrId" ColumnName="CarrId" />
+                <ScalarProperty Name="CarrCode" ColumnName="CarrCode" />
+                <ScalarProperty Name="CarrDesc" ColumnName="CarrDesc" />
+                <ScalarProperty Name="TmsCarrName" ColumnName="TmsCarrName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="OrdersModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustId" ColumnName="CustId" />
+                <ScalarProperty Name="CustCode" ColumnName="CustCode" />
+                <ScalarProperty Name="CustDesc" ColumnName="CustDesc" />
+                <ScalarProperty Name="HapcoUsesCustomer" ColumnName="HapcoUsesCustomer" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="TMSCUSTOMER_NAME" ColumnName="TMSCUSTOMER_NAME" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="dc" ColumnName="dc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustPOes">
+            <EntityTypeMapping TypeName="OrdersModel.CustPO">
+              <MappingFragment StoreEntitySet="CustPO">
+                <ScalarProperty Name="REFDATESQL" ColumnName="REFDATESQL" />
+                <ScalarProperty Name="VendorPO" ColumnName="VendorPO" />
+                <ScalarProperty Name="VendId" ColumnName="VendId" />
+                <ScalarProperty Name="CustPOID" ColumnName="CustPOID" />
+                <ScalarProperty Name="POShipToRef" ColumnName="POShipToRef" />
+                <ScalarProperty Name="POComment" ColumnName="POComment" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocsSent" ColumnName="DocsSent" />
+                <ScalarProperty Name="LinkFreightPOID" ColumnName="LinkFreightPOID" />
+                <ScalarProperty Name="CarrId" ColumnName="CarrId" />
+                <ScalarProperty Name="SalesOrder" ColumnName="SalesOrder" />
+                <ScalarProperty Name="PriorPOCode" ColumnName="PriorPOCode" />
+                <ScalarProperty Name="PPROREFDATE" ColumnName="PPROREFDATE" />
+                <ScalarProperty Name="POStatusID" ColumnName="POStatusID" />
+                <ScalarProperty Name="ApptNum" ColumnName="ApptNum" />
+                <ScalarProperty Name="POBillToRef" ColumnName="POBillToRef" />
+                <ScalarProperty Name="ReceivedPPRO" ColumnName="ReceivedPPRO" />
+                <ScalarProperty Name="CustBillToID" ColumnName="CustBillToID" />
+                <ScalarProperty Name="CustShipToID" ColumnName="CustShipToID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="ReroutePOCode" ColumnName="ReroutePOCode" />
+                <ScalarProperty Name="PriorPOCustCode" ColumnName="PriorPOCustCode" />
+                <ScalarProperty Name="SalesOrderAlt" ColumnName="SalesOrderAlt" />
+                <ScalarProperty Name="AlertReasonID" ColumnName="AlertReasonID" />
+                <ScalarProperty Name="LoadID" ColumnName="LoadID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="POGM" ColumnName="POGM" />
+                <ScalarProperty Name="MainCommodity" ColumnName="MainCommodity" />
+                <ScalarProperty Name="POFrghtRate" ColumnName="POFrghtRate" />
+                <ScalarProperty Name="POFreightLinkToCode" ColumnName="POFreightLinkToCode" />
+                <ScalarProperty Name="trip" ColumnName="trip" />
+                <ScalarProperty Name="LogisticsPO" ColumnName="LogisticsPO" />
+                <ScalarProperty Name="ConfNum" ColumnName="ConfNum" />
+                <ScalarProperty Name="StopNum" ColumnName="StopNum" />
+                <ScalarProperty Name="BOLRequestSent" ColumnName="BOLRequestSent" />
+                <ScalarProperty Name="DeliveryRequestSent" ColumnName="DeliveryRequestSent" />
+                <ScalarProperty Name="TruckingArrivalDate" ColumnName="TruckingArrivalDate" />
+                <ScalarProperty Name="POLoadStatusID" ColumnName="POLoadStatusID" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="LOT" ColumnName="LOT" />
+                <ScalarProperty Name="SUBLOT" ColumnName="SUBLOT" />
+                <ScalarProperty Name="CONDCODE" ColumnName="CONDCODE" />
+                <ScalarProperty Name="WAREHOUSE" ColumnName="WAREHOUSE" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="PPROCREATEDATE" ColumnName="PPROCREATEDATE" />
+                <ScalarProperty Name="PPROCREATETIME" ColumnName="PPROCREATETIME" />
+                <ScalarProperty Name="PRODID" ColumnName="PRODID" />
+                <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+                <ScalarProperty Name="UNITCOST" ColumnName="UNITCOST" />
+                <ScalarProperty Name="REFSTATUS" ColumnName="REFSTATUS" />
+                <ScalarProperty Name="AltQty" ColumnName="AltQty" />
+                <ScalarProperty Name="LASTBULKUPDATE" ColumnName="LASTBULKUPDATE" />
+                <ScalarProperty Name="PPROMODDATE" ColumnName="PPROMODDATE" />
+                <ScalarProperty Name="PPROMODTIME" ColumnName="PPROMODTIME" />
+                <ScalarProperty Name="Salesperson" ColumnName="Salesperson" />
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustPOLines">
+            <EntityTypeMapping TypeName="OrdersModel.CustPOLine">
+              <MappingFragment StoreEntitySet="CustPOLine">
+                <ScalarProperty Name="REFDATESQL" ColumnName="REFDATESQL" />
+                <ScalarProperty Name="CustPOLineID" ColumnName="CustPOLineID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="POLineLoadDate" ColumnName="POLineLoadDate" />
+                <ScalarProperty Name="ApptNum" ColumnName="ApptNum" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendRefNum" ColumnName="VendRefNum" />
+                <ScalarProperty Name="POLineStatusID" ColumnName="POLineStatusID" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="FreshouseRefNum" ColumnName="FreshouseRefNum" />
+                <ScalarProperty Name="VendId" ColumnName="VendId" />
+                <ScalarProperty Name="VendRefNumAlt" ColumnName="VendRefNumAlt" />
+                <ScalarProperty Name="MiscCharge" ColumnName="MiscCharge" />
+                <ScalarProperty Name="PHDSCharge" ColumnName="PHDSCharge" />
+                <ScalarProperty Name="VBRCharge" ColumnName="VBRCharge" />
+                <ScalarProperty Name="CostAlt" ColumnName="CostAlt" />
+                <ScalarProperty Name="VendAlt" ColumnName="VendAlt" />
+                <ScalarProperty Name="ChargeTypeID" ColumnName="ChargeTypeID" />
+                <ScalarProperty Name="LineGM" ColumnName="LineGM" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="AlertReasonID" ColumnName="AlertReasonID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="VendPurchPONum" ColumnName="VendPurchPONum" />
+                <ScalarProperty Name="CustPOID" ColumnName="CustPOID" />
+                <ScalarProperty Name="LineFrghtRate" ColumnName="LineFrghtRate" />
+                <ScalarProperty Name="MiscChargePerPc" ColumnName="MiscChargePerPc" />
+                <ScalarProperty Name="PerPcChargeTypeID" ColumnName="PerPcChargeTypeID" />
+                <ScalarProperty Name="ShipperId" ColumnName="ShipperId" />
+                <ScalarProperty Name="Pickup" ColumnName="Pickup" />
+                <ScalarProperty Name="PalletCount" ColumnName="PalletCount" />
+                <ScalarProperty Name="ActionRequired" ColumnName="ActionRequired" />
+                <ScalarProperty Name="Booked" ColumnName="Booked" />
+                <ScalarProperty Name="Manifest" ColumnName="Manifest" />
+                <ScalarProperty Name="ConfirmQty" ColumnName="ConfirmQty" />
+                <ScalarProperty Name="LOT" ColumnName="LOT" />
+                <ScalarProperty Name="PPROREFDATE" ColumnName="PPROREFDATE" />
+                <ScalarProperty Name="LASTBULKUPDATE" ColumnName="LASTBULKUPDATE" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CONDCODE" ColumnName="CONDCODE" />
+                <ScalarProperty Name="SUBLOT" ColumnName="SUBLOT" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="WAREHOUSE" ColumnName="WAREHOUSE" />
+                <ScalarProperty Name="PPROCREATETIME" ColumnName="PPROCREATETIME" />
+                <ScalarProperty Name="PPROCREATEDATE" ColumnName="PPROCREATEDATE" />
+                <ScalarProperty Name="PPROMODDATE" ColumnName="PPROMODDATE" />
+                <ScalarProperty Name="PPROMODTIME" ColumnName="PPROMODTIME" />
+                <ScalarProperty Name="AltQty" ColumnName="AltQty" />
+                <ScalarProperty Name="POLineComment" ColumnName="POLineComment" />
+                <ScalarProperty Name="LoadNumber" ColumnName="LoadNumber" />
+                <ScalarProperty Name="CarrierCode" ColumnName="CarrierCode" />
+                <ScalarProperty Name="CarrierDesc" ColumnName="CarrierDesc" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POLineStatus">
+            <EntityTypeMapping TypeName="OrdersModel.POLineStatu">
+              <MappingFragment StoreEntitySet="POLineStatus">
+                <ScalarProperty Name="POLineStatusID" ColumnName="POLineStatusID" />
+                <ScalarProperty Name="POLineStatusDesc" ColumnName="POLineStatusDesc" />
+                <ScalarProperty Name="POLineStatusMap" ColumnName="POLineStatusMap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POStatus">
+            <EntityTypeMapping TypeName="OrdersModel.POStatu">
+              <MappingFragment StoreEntitySet="POStatus">
+                <ScalarProperty Name="POStatusDesc" ColumnName="POStatusDesc" />
+                <ScalarProperty Name="POStatusID" ColumnName="POStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdCats">
+            <EntityTypeMapping TypeName="OrdersModel.ProdCat">
+              <MappingFragment StoreEntitySet="ProdCat">
+                <ScalarProperty Name="ProdCatID" ColumnName="ProdCatID" />
+                <ScalarProperty Name="Prodid" ColumnName="Prodid" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Invisible" ColumnName="Invisible" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="OrdersModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="ProdNum" ColumnName="ProdNum" />
+                <ScalarProperty Name="ProdCode" ColumnName="ProdCode" />
+                <ScalarProperty Name="ProdDesc" ColumnName="ProdDesc" />
+                <ScalarProperty Name="ProdAltDesc" ColumnName="ProdAltDesc" />
+                <ScalarProperty Name="ProdSize" ColumnName="ProdSize" />
+                <ScalarProperty Name="ProdCountPer" ColumnName="ProdCountPer" />
+                <ScalarProperty Name="ProdWeight" ColumnName="ProdWeight" />
+                <ScalarProperty Name="ProdGrade" ColumnName="ProdGrade" />
+                <ScalarProperty Name="ProdPack" ColumnName="ProdPack" />
+                <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="ProdCompany" ColumnName="ProdCompany" />
+                <ScalarProperty Name="CasesPerPallet" ColumnName="CasesPerPallet" />
+                <ScalarProperty Name="RepackRatio" ColumnName="RepackRatio" />
+                <ScalarProperty Name="ReorderAdviseQuant" ColumnName="ReorderAdviseQuant" />
+                <ScalarProperty Name="ReorderQuant" ColumnName="ReorderQuant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="OrdersModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VendId" ColumnName="VendId" />
+                <ScalarProperty Name="VendCode" ColumnName="VendCode" />
+                <ScalarProperty Name="VendDesc" ColumnName="VendDesc" />
+                <ScalarProperty Name="HapcoUsesVendor" ColumnName="HapcoUsesVendor" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

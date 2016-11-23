@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title Order Tracker</title>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+    <style>
+        .k-header h1 {
+            margin: 0;
+            padding: 15px 7.5px;
+            font-size: 30px;
+            font-weight: lighter;
+        }
+
+        /* Sticky footer styles
+    -------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+
+        .container-fluid .text-muted {
+            margin: 20px 0;
+        }
+
+        .placeholders {
+            margin: 30px auto;
+        }
+
+        .placeholder img {
+            display: inline-block;
+        }
+
+        p .k-button {
+            margin: 0 15px 0 0;
+        }
+        .btn-toggle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: none;
+            height: 48px;
+        }
+
+        .btn-toggle .k-icon {
+            opacity: 1;
+        }
+
+        .btn-toggle,
+        .k-primary.btn-toggle:hover,
+        .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]),
+        .btn-toggle:focus:not(.k-state-disabled):not([disabled]) {
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .btn-toggle .k-i-hbars,
+        .k-primary.btn-toggle:hover .k-i-hbars,
+        .btn-toggle:focus:active:not(.k-state-disabled):not([disabled]) .k-i-hbars,
+        .btn-toggle:focus:not(.k-state-disabled):not([disabled]) .k-i-hbars {
+            background-position: -80px -32px;
+        }
+        @@media (max-width: 768px) {
+          .k-item {
+            display: block;
+            clear: both;
+            float: none;
+            width: 100%;
+          }
+
+          .k-header h1 {
+            margin: 0;
+            padding: 16px 15px 14px 60px;
+            font-size: 18px;
+            font-weight: lighter;
+           }  
+        }
+    </style>
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendoGridCustomConfig.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jszip.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+
+
+
+
+	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row k-header">
+            <div id="responsive-panel">
+       @(Html.Kendo().Menu()
+      .Name("Menu")
+      .Items(items =>
+      {
+          items.Add().Text("Order Tracker");
+          items.Add().Text("Directs").Action("Direct", "Home"); 
+          items.Add().Text("Inbounds").Action("Inbound", "Home"); 
+          items.Add().Text("Outbounds").Action("Outbound", "Home");
+      })
+    )
+
+            </div>
+            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+        </div>
+    </div>
+
+    @RenderBody()
+    <script src="@Url.Content("~/Scripts/kendoGridCustomConfigs.js")"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-18 col-md-12">
+                <div id="grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <p class="text-muted">&copy; @DateTime.Now.Year - ADS Management </p><br />
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $("#responsive-panel").kendoResponsivePanel({
+                breakpoint: 768,
+                autoClose: false,
+                orientation: "top"
+            });
+        });
+        function onclick(e) {
+            $("#responsive-panel").getKendoResponsivePanel().toggle();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "";
+    //Setup two variables for the Kendo UI datepickers.
+    var firstOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    var lastOfMonth = firstOfMonth.AddMonths(1).AddDays(-1);
+}
+<div id="sortPanel" class="panel-group col-md-6 center ">
+    <div class="panel panel-primary">
+
+        <div class="panel panel-heading"><span class="glyphicon glyphicon-remove" id="hideDateFilter"></span> Sorting Options</div>
+        <div class="panel panel-body">
+
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="datepicker1">Sales from:</label>
+                    @(Html.Kendo().DatePicker()
+                                  .Name("datePickerFrom")
+                                  .Value(firstOfMonth)
+                                  .HtmlAttributes(new { @class = "form-control", style = "width: 100%" })
+                    )
+                </div>
+                <div class="form-group">
+                    <label for="datepicker">Sales to:</label>
+                    @(Html.Kendo().DatePicker()
+                                  .Name("datePickerTo")
+                                  .Value(lastOfMonth)
+                                  .HtmlAttributes(new { @class = "form-control", style = "width: 100%" })
+                    )
+                </div>
+                <div class="form-group">
+                    <label for="rangeType">Commodity:</label>
+                    @(Html.Kendo().DropDownList()
+                                  .Name("dropDownCommodities")
+                                  .DataTextField("Commodity")
+                                  .DataValueField("Commodity")
+                                  .DataSource(source =>
+                                  {
+                                      source.Read(read =>
+                                      {
+                                          read.Action("GetAllCommodities", "Grid");
+                                      });
+                                  })
+                                  .HtmlAttributes(new { @class = "form-control", style = "width: 100%" })
+                    )
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary form-control" id="btnSetUserFilters">Apply Filter</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default form-control" id="btnClearUserFilters">Clear Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-18 col-md-12">
+            @(Html.Kendo().Grid<DirectOrderTracker.Models.ViewModels.InboundSalesViewModel>()
+        .Name("grid")
+        .Events(e => { e.DataBound("onDataBound"); })
+            .ToolBar(toolbar =>
+            {
+                toolbar.Custom().Text("Reset grid").HtmlAttributes(new { id = "clearFilters" });
+                toolbar.Custom().Text("Advanced Filters").HtmlAttributes(new { id = "showDateFilters" });
+            })
+            .Pageable(pager => pager.Refresh(true))
+            .Sortable()
+           .Filterable(ftb =>
+           {
+
+               ftb.Extra(false);
+               ftb.Operators(op =>
+               {
+                   op.ForString(str =>
+                   {
+                       str.Clear().Contains("Contains");
+                   });
+               });
+           })
+            .Scrollable()
+            .Filterable()
+            .Navigatable()
+            .Resizable(resize => resize.Columns(true))
+            .HtmlAttributes(new { style = "height:900px;" })
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.CustPOLineID).Hidden();
+                columns.Bound(p => p.VendDesc).Title("Vendor").Width(180);
+                columns.Bound(p => p.POLineComment).Width(150).Filterable(false).Title("Comment");
+                columns.Bound(p => p.Qty).Width(65).Filterable(false);
+                columns.Bound(p => p.ProdDesc).Width(180);
+                columns.Bound(p => p.PPROREFDATE).Format("{0:MM/dd/yyyy}").Width(140);
+                columns.Bound(p => p.FreshouseRefNum).Width(100);
+                columns.Bound(p => p.VendPurchPONum).Width(125);
+                columns.Bound(p => p.LoadNumber).Width(130);
+                columns.Bound(p => p.Cost).Format("{0:c}").Width(75).Filterable(false);
+                columns.Bound(p => p.CostAlt).Format("{0:c}").Width(75).Filterable(false);
+                columns.Bound(p => p.CarrierDesc).Width(100).Filterable(true);
+                columns.Bound(p => p.LineFrghtRate).Width(75).Filterable(true);
+                columns.Bound(p => p.TYPE).Width(75).Filterable(false);
+                columns.Bound(p => p.Commodity).Width(75).Filterable(true);
+                columns.Bound(p => p.Buyer).Filterable(filterable => filterable.UI("salesPersonFilter")).Width(75);
+                columns.Command(command =>
+                {
+                    command.Edit().Text("Modify");
+                }).Width(230);
+            })
+            .DataSource(dataSource => dataSource
+                                            .Ajax()
+                                            .Model(model =>
+                                            {
+                                                model.Id(p => p.CustPOLineID);
+                                                model.Field(p => p.VendDesc).Editable(false);
+                                                model.Field(p => p.FreshouseRefNum).Editable(false);
+                                                model.Field(p => p.LineFrghtRate).Editable(false);
+                                                model.Field(p => p.PPROREFDATE).Editable(false);
+                                                model.Field(p => p.VendPurchPONum).Editable(false);
+                                                model.Field(p => p.Qty).Editable(false);
+                                                model.Field(p => p.Cost).Editable(false);
+                                                model.Field(p => p.TYPE).Editable(false);
+                                                model.Field(p => p.LoadNumber).Editable(false);
+                                                model.Field(p => p.CarrierDesc).Editable(false);
+                                                model.Field(p => p.ProdDesc).Editable(false);
+                                                model.Field(p => p.CostAlt).Editable(false);
+                                                model.Field(p => p.Commodity).Editable(false);
+                                                model.Field(p => p.Buyer).Editable(false);
+                                            })
+                                            .PageSize(20)
+                                            .Read(read => read.Action("AllInBounds", "Grid").Data("clientData"))
+                                            .Update(update => update.Action("EditInBounds", "Grid")))
+            )
+        </div>
+    </div>
+</div>
+
+<!-- styling for POLineStatus column. Putting it here instead of the BundleConfig to make it easy to customize-->
+
+
+<script>
+        function salesPersonFilter(element)
+        {
+            element.kendoDropDownList({
+                dataSource: {
+                    transport: {
+                        read: "@Url.Action("GetSalesPeople", "Grid")"
+                    }
+                },
+                optionLabel: "[Sales Person]"
+            });
+        }
+   
+</script>

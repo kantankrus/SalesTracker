@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DirectOrderEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DirectOrdersEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Carriers" EntityType="DirectOrderEntities.Carrier" />
+    <EntitySet Name="Contacts" EntityType="DirectOrderEntities.Contact" />
+    <EntitySet Name="Customers" EntityType="DirectOrderEntities.Customer" />
+    <EntitySet Name="CustPOLines" EntityType="DirectOrderEntities.CustPOLine" />
+    <EntitySet Name="POLineStatus" EntityType="DirectOrderEntities.POLineStatu" />
+    <EntitySet Name="POStatus" EntityType="DirectOrderEntities.POStatu" />
+    <EntitySet Name="shippers" EntityType="DirectOrderEntities.shipper" />
+    <EntitySet Name="Users" EntityType="DirectOrderEntities.User" />
+    <EntitySet Name="Vendors" EntityType="DirectOrderEntities.Vendor" />
+    <AssociationSet Name="FK__Contacts__Carrie__47A6A41B" Association="DirectOrderEntities.FK__Contacts__Carrie__47A6A41B">
+      <End Role="Carrier" EntitySet="Carriers" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustPOLin__Shipp__7132C993" Association="DirectOrderEntities.FK__CustPOLin__Shipp__7132C993">
+      <End Role="shipper" EntitySet="shippers" />
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustPOLine_CustPOLine" Association="DirectOrderEntities.FK_CustPOLine_CustPOLine">
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+      <End Role="CustPOLine1" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustPOLine_CustPOLine1" Association="DirectOrderEntities.FK_CustPOLine_CustPOLine1">
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+      <End Role="CustPOLine1" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustPOLine_CustPOLine2" Association="DirectOrderEntities.FK_CustPOLine_CustPOLine2">
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+      <End Role="CustPOLine1" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustPOLine_Vendor" Association="DirectOrderEntities.FK_CustPOLine_Vendor">
+      <End Role="Vendor" EntitySet="Vendors" />
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <AssociationSet Name="RelPOLine_LineStatus" Association="DirectOrderEntities.RelPOLine_LineStatus">
+      <End Role="POLineStatu" EntitySet="POLineStatus" />
+      <End Role="CustPOLine" EntitySet="CustPOLines" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="DirectOrderEntities.Product" />
+    <EntitySet Name="CustPOes" EntityType="DirectOrderEntities.CustPO" />
+    <AssociationSet Name="MergeSource_RelPOStatus_CustPO" Association="DirectOrderEntities.MergeSource_RelPOStatus_CustPO">
+      <End Role="POStatu" EntitySet="POStatus" />
+      <End Role="CustPO" EntitySet="CustPOes" />
+    </AssociationSet>
+    <AssociationSet Name="RelPOStatus_CustPO" Association="DirectOrderEntities.RelPOStatus_CustPO">
+      <End Role="POStatu" EntitySet="POStatus" />
+      <End Role="CustPO" EntitySet="CustPOes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Carrier">
+    <Key>
+      <PropertyRef Name="CarrId" />
+    </Key>
+    <Property Name="CarrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarrCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CarrDesc" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TmsCarrName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contacts" Relationship="DirectOrderEntities.FK__Contacts__Carrie__47A6A41B" FromRole="Carrier" ToRole="Contact" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryEmail" Type="Boolean" />
+    <Property Name="CarrierId" Type="Int32" />
+    <Property Name="LegacyContact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Blast" Type="Boolean" />
+    <Property Name="ContactType" Type="Byte" />
+    <Property Name="CustId" Type="Int16" />
+    <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carrier" Relationship="DirectOrderEntities.FK__Contacts__Carrie__47A6A41B" FromRole="Contact" ToRole="Carrier" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustCode" />
+    </Key>
+    <Property Name="CustId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CustDesc" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HapcoUsesCustomer" Type="Boolean" />
+    <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TMSCUSTOMER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="dc" Type="Byte" />
+  </EntityType>
+  <EntityType Name="CustPOLine">
+    <Key>
+      <PropertyRef Name="CustPOLineID" />
+    </Key>
+    <Property Name="CustPOLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Qty" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Origin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="POLineLoadDate" Type="DateTime" Precision="0" />
+    <Property Name="ApptNum" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="VendRefNum" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="POLineStatusID" Type="Byte" />
+    <Property Name="ProdID" Type="Int32" />
+    <Property Name="FreshouseRefNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="VendId" Type="Int32" />
+    <Property Name="PriceAlt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="VendRefNumAlt" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+    <Property Name="MiscCharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PHDSCharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="VBRCharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CostAlt" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="VendAlt" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="ChargeTypeID" Type="Byte" />
+    <Property Name="LineGM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="AlertReasonID" Type="Byte" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="VendPurchPONum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CustPOID" Type="Int32" />
+    <Property Name="LineFrghtRate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MiscChargePerPc" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PerPcChargeTypeID" Type="Byte" />
+    <Property Name="Temp" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="ShipperId" Type="Int16" />
+    <Property Name="Pickup" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PalletCount" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="ActionRequired" Type="Boolean" />
+    <Property Name="Booked" Type="Boolean" />
+    <Property Name="Manifest" Type="Boolean" />
+    <Property Name="ConfirmQty" Type="Boolean" />
+    <Property Name="LOT" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+    <Property Name="PPROREFDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="LASTBULKUPDATE" Type="DateTime" Precision="0" />
+    <Property Name="SOURCE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="TYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="CONDCODE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="LOCATION" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="ISTEMP" Type="Boolean" />
+    <Property Name="SUBLOT" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="LINE" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="WAREHOUSE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="PPROCREATETIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PPROCREATEDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PPROMODDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PPROMODTIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="AltQty" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="POLineComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LoadNumber" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="CarrierCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="CarrierDesc" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Buyer" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="shipper" Relationship="DirectOrderEntities.FK__CustPOLin__Shipp__7132C993" FromRole="CustPOLine" ToRole="shipper" />
+    <NavigationProperty Name="CustPOLine1" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine" FromRole="CustPOLine" ToRole="CustPOLine1" />
+    <NavigationProperty Name="CustPOLine2" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine" FromRole="CustPOLine1" ToRole="CustPOLine" />
+    <NavigationProperty Name="CustPOLine11" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine1" FromRole="CustPOLine" ToRole="CustPOLine1" />
+    <NavigationProperty Name="CustPOLine3" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine1" FromRole="CustPOLine1" ToRole="CustPOLine" />
+    <NavigationProperty Name="CustPOLine12" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine2" FromRole="CustPOLine" ToRole="CustPOLine1" />
+    <NavigationProperty Name="CustPOLine4" Relationship="DirectOrderEntities.FK_CustPOLine_CustPOLine2" FromRole="CustPOLine1" ToRole="CustPOLine" />
+    <NavigationProperty Name="Vendor" Relationship="DirectOrderEntities.FK_CustPOLine_Vendor" FromRole="CustPOLine" ToRole="Vendor" />
+    <NavigationProperty Name="POLineStatu" Relationship="DirectOrderEntities.RelPOLine_LineStatus" FromRole="CustPOLine" ToRole="POLineStatu" />
+  </EntityType>
+  <EntityType Name="POLineStatu">
+    <Key>
+      <PropertyRef Name="POLineStatusID" />
+    </Key>
+    <Property Name="POLineStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="POLineStatusDesc" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+    <Property Name="POLineStatusMap" Type="Binary" MaxLength="4" FixedLength="true" />
+    <NavigationProperty Name="CustPOLines" Relationship="DirectOrderEntities.RelPOLine_LineStatus" FromRole="POLineStatu" ToRole="CustPOLine" />
+  </EntityType>
+  <EntityType Name="POStatu">
+    <Key>
+      <PropertyRef Name="POStatusID" />
+    </Key>
+    <Property Name="POStatusDesc" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="POStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CustPOes" Relationship="DirectOrderEntities.MergeSource_RelPOStatus_CustPO" FromRole="POStatu" ToRole="CustPO" />
+    <NavigationProperty Name="CustPOes1" Relationship="DirectOrderEntities.RelPOStatus_CustPO" FromRole="POStatu" ToRole="CustPO" />
+  </EntityType>
+  <EntityType Name="shipper">
+    <Key>
+      <PropertyRef Name="ShipperId" />
+    </Key>
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TMSID" Type="Int16" />
+    <Property Name="ShipperId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CustPOLines" Relationship="DirectOrderEntities.FK__CustPOLin__Shipp__7132C993" FromRole="shipper" ToRole="CustPOLine" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PPROUserName" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="VendId" />
+    </Key>
+    <Property Name="VendId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="VendDesc" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HapcoUsesVendor" Type="Boolean" />
+    <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CustPOLines" Relationship="DirectOrderEntities.FK_CustPOLine_Vendor" FromRole="Vendor" ToRole="CustPOLine" />
+  </EntityType>
+  <Association Name="FK__Contacts__Carrie__47A6A41B">
+    <End Type="DirectOrderEntities.Carrier" Role="Carrier" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.Contact" Role="Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carrier">
+        <PropertyRef Name="CarrId" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustPOLin__Shipp__7132C993">
+    <End Type="DirectOrderEntities.shipper" Role="shipper" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shipper">
+        <PropertyRef Name="ShipperId" />
+      </Principal>
+      <Dependent Role="CustPOLine">
+        <PropertyRef Name="ShipperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustPOLine_CustPOLine">
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CustPOLine">
+        <PropertyRef Name="CustPOLineID" />
+      </Principal>
+      <Dependent Role="CustPOLine1">
+        <PropertyRef Name="CustPOLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustPOLine_CustPOLine1">
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CustPOLine">
+        <PropertyRef Name="CustPOLineID" />
+      </Principal>
+      <Dependent Role="CustPOLine1">
+        <PropertyRef Name="CustPOLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustPOLine_CustPOLine2">
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CustPOLine">
+        <PropertyRef Name="CustPOLineID" />
+      </Principal>
+      <Dependent Role="CustPOLine1">
+        <PropertyRef Name="CustPOLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustPOLine_Vendor">
+    <End Type="DirectOrderEntities.Vendor" Role="Vendor" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendId" />
+      </Principal>
+      <Dependent Role="CustPOLine">
+        <PropertyRef Name="VendId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelPOLine_LineStatus">
+    <End Type="DirectOrderEntities.POLineStatu" Role="POLineStatu" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.CustPOLine" Role="CustPOLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POLineStatu">
+        <PropertyRef Name="POLineStatusID" />
+      </Principal>
+      <Dependent Role="CustPOLine">
+        <PropertyRef Name="POLineStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProdID" />
+    </Key>
+    <Property Name="ProdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProdNum" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="ProdCode" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="ProdDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProdAltDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProdSize" Type="Int16" />
+    <Property Name="ProdCountPer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ProdWeight" Type="Int32" />
+    <Property Name="ProdGrade" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ProdPack" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Commodity" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="ProductType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ProdCompany" Type="Byte" Nullable="false" />
+    <Property Name="CasesPerPallet" Type="Int16" />
+    <Property Name="RepackRatio" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ReorderAdviseQuant" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ReorderQuant" Type="Decimal" Precision="8" Scale="2" />
+  </EntityType>
+  <EntityType Name="CustPO">
+    <Key>
+      <PropertyRef Name="CustPOID" />
+      <PropertyRef Name="CustBillToID" />
+    </Key>
+    <Property Name="CustPOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="POShipToRef" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="POComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="DocsSent" Type="Boolean" />
+    <Property Name="DocsReceived" Type="Boolean" />
+    <Property Name="DeliveredToCust" Type="Boolean" />
+    <Property Name="ShippedInSystem" Type="Boolean" />
+    <Property Name="LinkFreightPOID" Type="Int32" />
+    <Property Name="CarrId" Type="Int16" />
+    <Property Name="SalesOrder" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="PriorPOCode" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="PPROREFDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="POStatusID" Type="Byte" />
+    <Property Name="ApptNum" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="POAlert" Type="Boolean" />
+    <Property Name="POBillToRef" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="ReceivedPPRO" Type="Boolean" />
+    <Property Name="ReceivedFoodLink" Type="Boolean" />
+    <Property Name="ReroutePOCustCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="CustBillToID" Type="Int16" Nullable="false" />
+    <Property Name="CustShipToID" Type="Int16" />
+    <Property Name="CompanyID" Type="Byte" />
+    <Property Name="ReroutePOCode" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="PriorPOCustCode" Type="Int16" />
+    <Property Name="Reroute" Type="Boolean" />
+    <Property Name="SalesOrderAlt" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="AlertReasonID" Type="Byte" />
+    <Property Name="LoadID" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="0" />
+    <Property Name="POGM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MainCommodity" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="POFrghtRate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="POFreightLinkToCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="trip" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="LogisticsPO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="ConfNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EVNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StopNum" Type="Byte" />
+    <Property Name="BOLRequestSent" Type="DateTime" Precision="0" />
+    <Property Name="DeliveryRequestSent" Type="DateTime" Precision="0" />
+    <Property Name="TruckingArrivalDate" Type="DateTime" Precision="0" />
+    <Property Name="POLoadStatusID" Type="Int32" />
+    <Property Name="SOURCE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="TYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="LOT" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+    <Property Name="SUBLOT" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="CONDCODE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="WAREHOUSE" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="LINE" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Qty" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="PPROCREATEDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PPROCREATETIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PRODID" Type="Int32" />
+    <Property Name="UNITPRICE" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="UNITCOST" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="REFSTATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AltQty" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="LASTBULKUPDATE" Type="DateTime" Precision="0" />
+    <Property Name="PPROMODDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="PPROMODTIME" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="Salesperson" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="LoadDate" Type="DateTime" Precision="3" />
+    <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="POStatu" Relationship="DirectOrderEntities.MergeSource_RelPOStatus_CustPO" FromRole="CustPO" ToRole="POStatu" />
+    <NavigationProperty Name="POStatu1" Relationship="DirectOrderEntities.RelPOStatus_CustPO" FromRole="CustPO" ToRole="POStatu" />
+  </EntityType>
+  <Association Name="MergeSource_RelPOStatus_CustPO">
+    <End Type="DirectOrderEntities.POStatu" Role="POStatu" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.CustPO" Role="CustPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POStatu">
+        <PropertyRef Name="POStatusID" />
+      </Principal>
+      <Dependent Role="CustPO">
+        <PropertyRef Name="POStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelPOStatus_CustPO">
+    <End Type="DirectOrderEntities.POStatu" Role="POStatu" Multiplicity="0..1" />
+    <End Type="DirectOrderEntities.CustPO" Role="CustPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POStatu">
+        <PropertyRef Name="POStatusID" />
+      </Principal>
+      <Dependent Role="CustPO">
+        <PropertyRef Name="POStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

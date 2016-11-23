@@ -1,0 +1,49 @@
+﻿    .delivered {
+        background: linear-gradient(#e9fce9, #90ee90);
+        background-color: lightgreen;
+    }
+
+    .rejected {
+        background: linear-gradient(#fad1d1, #f08080);
+        background-color: lightcoral;
+    }
+
+    .cancelled {
+        background: linear-gradient(#f2f2f2, #d3d3d3);
+        background-color: lightgray;
+    }
+
+    .loading {
+        background: linear-gradient(#fcfce8, #f4f4a4);
+        background-color: lightgoldenrodyellow;
+    }
+
+    .intransit {
+        background: linear-gradient(#fce4cf, #f7bc88);
+        background-color: sandybrown;
+    }
+
+    .normal {
+        background-color: white;
+    }
+
+    .center {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .k-grid {
+        font-size: 11px;
+    }
+
+        .k-grid td {
+            line-height: 1em;
+        }
+
+    .k-button {
+        min-width: 0 !important;
+        padding: 5px;
+        padding-bottom: 9px;
+        height: 25px;
+    }

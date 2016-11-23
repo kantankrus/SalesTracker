@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c278199c53584e6eb669ca851a6cf7d3" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="OrdersModel.Carrier" Width="1.5" PointX="3.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Customer" Width="1.5" PointX="3.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.CustPO" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.CustPOLine" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.POLineStatu" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.POStatu" Width="1.5" PointX="3.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.ProdCat" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Product" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Vendor" Width="1.5" PointX="6" PointY="20.25" IsExpanded="true" />
+        <AssociationConnector Association="OrdersModel.RelCustPO_Carrier" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelCustPO_Cust" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelPOCustCode_Cust" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_CustPOLine_CustPO" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelCustPO_Prod" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelPOStatus_CustPO" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_CustPOLine_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_CustPOLine_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelPOLine_LineStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.fk_Prodid_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.RelCustPO_Vend" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
